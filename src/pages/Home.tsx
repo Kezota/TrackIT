@@ -4,11 +4,11 @@ import { Footer } from "@/components/Footer";
 
 function Home() {
   return (
-    <>
+    <section className="page">
       <NavBar currentNav="home" />
       <Header />
       <Footer />
-    </>
+    </section>
   );
 }
 

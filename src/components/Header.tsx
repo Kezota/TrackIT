@@ -24,14 +24,14 @@ export const Header = (props: Header1Props) => {
     ...props,
   } as Props;
   return (
-    <section className="page px-[2%] md:px-[6%] lg:px-[8%]">
+    <section className="header px-[2%] md:px-[6%] lg:px-[8%]">
       <div id="relume" className="px-[5%] py-3 md:py-4 lg:py-2">
         <div className="container">
           <div className="lg:grid-cols-55 grid grid-cols-1 gap-y-8 md:gap-y-16 lg:items-center">
             <div className="order-2 md:order-1 lg:ml-8">
               <h1 className="mb-5 text-2xl font-bold md:mb-6 md:text-6xl lg:text-5xl">
                 {heading}
-                <div className="flex items-center lg:items-start">
+                <div className="mt-3 flex items-center lg:items-start">
                   <span className="text-primary lg:inline-block">—</span>
                   <FlipWords
                     className="text-primary lg:inline-block"

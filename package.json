@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@nextui-org/button": "^2.0.38",
+    "@nextui-org/card": "^2.0.34",
     "@nextui-org/link": "^2.0.35",
     "@nextui-org/navbar": "^2.0.37",
     "@nextui-org/system": "^2.2.6",
@@ -18,6 +19,8 @@
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@relume_io/relume-ui": "^0.6.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.8",

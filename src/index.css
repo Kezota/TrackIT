@@ -4,12 +4,15 @@
 @tailwind utilities;
 
 body {
-  background-color: #f7fafc;
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
 }
 
 .page {
+  background-color: #f7fafc;
+}
+
+.header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,4 +23,11 @@ body {
   :root {
     --radius: 0.5rem;
   }
+}
+
+#particles canvas {
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
