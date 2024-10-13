@@ -3,7 +3,7 @@ import { lazy } from "react";
 
 const Home = lazy(() => import("./pages/Home"));
 const Attendance = lazy(() => import("./pages/Attendance"));
-const Admin = lazy(() => import("./pages/Admin"));
+const Lecturer = lazy(() => import("./pages/Lecturer"));
 const Profile = lazy(() => import("./pages/Profile"));
 const Login = lazy(() => import("./pages/Login"));
 
@@ -17,8 +17,8 @@ const router = createBrowserRouter([
     element: <Attendance />,
   },
   {
-    path: "/admin",
-    element: <Admin />,
+    path: "/lecturer",
+    element: <Lecturer />,
   },
   {
     path: "/profile",

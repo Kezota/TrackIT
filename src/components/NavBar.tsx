@@ -15,7 +15,7 @@ import { Button } from "@nextui-org/button";
 export default function NavBar({ currentNav }: { currentNav: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = ["Home", "Attendance", "Profile", "Admin"];
+  const menuItems = ["Home", "Attendance", "Profile", "Lecturer"];
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -57,13 +57,13 @@ export default function NavBar({ currentNav }: { currentNav: string }) {
             Profile
           </Link>
         </NavbarItem>
-        <NavbarItem isActive={currentNav === "admin"}>
+        <NavbarItem isActive={currentNav === "lecturer"}>
           <Link
-            color={currentNav !== "admin" ? "foreground" : undefined}
-            href="/admin"
-            aria-current={currentNav === "admin" ? "page" : undefined}
+            color={currentNav !== "lecturer" ? "foreground" : undefined}
+            href="/lecturer"
+            aria-current={currentNav === "lecturer" ? "page" : undefined}
           >
-            Admin
+            Lecturer
           </Link>
         </NavbarItem>
       </NavbarContent>
