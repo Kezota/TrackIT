@@ -13,7 +13,9 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      colors: {},
+      colors: {
+        primary: "#04598a",
+      },
       screens: {
         lg: "1024px",
       },

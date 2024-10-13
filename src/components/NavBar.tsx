@@ -18,14 +18,22 @@ export default function NavBar({ currentNav }: { currentNav: string }) {
   const menuItems = ["Home", "Attendance", "Profile", "Lecturer"];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar
+      onMenuOpenChange={setIsMenuOpen}
+      maxWidth="full"
+      className="lg:px-[10%]"
+    >
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
-        <NavbarBrand>
-          <p className="font-bold text-inherit">TrackIT</p>
+        <NavbarBrand className="">
+          <p className="font-bold text-inherit">
+            <Link href="/" className="cursor-pointer text-xl">
+              TrackIT
+            </Link>
+          </p>
         </NavbarBrand>
       </NavbarContent>
 
