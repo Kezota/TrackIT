@@ -7,8 +7,15 @@ export default {
     "./node_modules/@nextui-org/theme/dist/components/(button|link|navbar|ripple|spinner).js",
   ],
   theme: {
-    extend: {},
+  	extend: {
+  		borderRadius: {
+  			lg: 'var(--radius)',
+  			md: 'calc(var(--radius) - 2px)',
+  			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		colors: {}
+  	}
   },
-  darkMode: "class",
-  plugins: [nextui()],
+  darkMode: ["class", "class"],
+  plugins: [nextui(), require("tailwindcss-animate")],
 };

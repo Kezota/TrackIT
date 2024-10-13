@@ -6,3 +6,16 @@ body {
   background-color: #f7fafc;
   min-height: 100vh;
 }
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
