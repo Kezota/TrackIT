@@ -16,7 +16,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 60vh;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 @layer base {
@@ -95,7 +100,7 @@ body {
   @apply !border-b-gray dark:!border-b-meta-4;
 }
 .apexcharts-xaxistooltip-bottom {
-  @apply !bg-gray !rounded !border-none !text-xs !font-medium !text-black dark:!text-white;
+  @apply !rounded !border-none !bg-gray !text-xs !font-medium !text-black dark:!text-white;
 }
 .apexcharts-tooltip-series-group {
   @apply !pl-1.5;
@@ -115,7 +120,7 @@ body {
   @apply dark:!border-b-boxdark;
 }
 .flatpickr-calendar {
-  @apply dark:!bg-boxdark dark:!text-bodydark dark:!shadow-8 2xsm:!w-auto !p-6;
+  @apply !p-6 dark:!bg-boxdark dark:!text-bodydark dark:!shadow-8 2xsm:!w-auto;
 }
 .flatpickr-day {
   @apply dark:!text-bodydark dark:hover:!border-meta-4 dark:hover:!bg-meta-4;
@@ -190,7 +195,7 @@ span.flatpickr-weekday,
 }
 
 .map-btn .jvm-zoom-btn {
-  @apply w-7.5 h-7.5 border-stroke dark:border-strokedark text-body dark:text-bodydark flex items-center justify-center rounded border bg-white px-0 pb-0.5 pt-0 text-2xl leading-none hover:border-primary hover:bg-primary hover:text-white dark:hover:border-primary dark:hover:text-white;
+  @apply flex h-7.5 w-7.5 items-center justify-center rounded border border-stroke bg-white px-0 pb-0.5 pt-0 text-2xl leading-none text-body hover:border-primary hover:bg-primary hover:text-white dark:border-strokedark dark:text-bodydark dark:hover:border-primary dark:hover:text-white;
 }
 .mapOne .jvm-zoom-btn {
   @apply bottom-0 left-auto top-auto;

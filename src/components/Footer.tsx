@@ -40,7 +40,7 @@ export const Footer = (props: Footer4Props) => {
     ...props,
   } as Props;
   return (
-    <footer className="md:py-13 px-[5%] py-8 lg:px-[10%] lg:py-14">
+    <footer className="mt-auto px-[5%] py-8 md:py-13 lg:px-[10%] lg:py-14">
       <div className="h-px w-[100%] bg-black" />
       <div className="flex flex-col-reverse items-center justify-center justify-items-center pb-4 pt-6 text-sm md:flex-row md:gap-x-6 md:pb-0 md:pt-8">
         <p className="mt-8 md:mt-0">
