@@ -4,7 +4,7 @@ import { lazy } from "react";
 const Home = lazy(() => import("./pages/Home"));
 const Attendance = lazy(() => import("./pages/Attendance"));
 const Lecturer = lazy(() => import("./pages/lecturer/Lecturer"));
-const Profile = lazy(() => import("./pages/Profile"));
+const Profile = lazy(() => import("./pages/profile/Profile"));
 const Login = lazy(() => import("./pages/Login"));
 
 const router = createBrowserRouter([
