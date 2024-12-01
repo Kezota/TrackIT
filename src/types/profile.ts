@@ -1,4 +1,5 @@
 export type Profile = {
+  id: number;
   fullName: string;
   location: string;
   studentId: string;
@@ -7,4 +8,5 @@ export type Profile = {
   email: string;
   role: "student" | "lecturer" | "staff";
   photo: string;
+  password: string;
 };

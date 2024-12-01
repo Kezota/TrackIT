@@ -2,24 +2,31 @@ import { Footer } from "@/components/Footer";
 import NavBar from "../../components/NavBar";
 import ProfileContent from "./ProfileContent";
 import { Profile as ProfileProps } from "@/types/profile";
-import person from "/src/data/images/person.jpg";
-
-const profileDummy: ProfileProps = {
-  fullName: "Kezia Meilany Tandapai",
-  location: "Jakarta, Indonesia",
-  studentId: "2702272823",
-  dateOfBirth: "21/02/1997",
-  phoneNumber: "082291565600",
-  email: "kezia.tandapai@binus.ac.id",
-  role: "student",
-  photo: person,
-};
+import { useEffect, useState } from "react";
+import { getProfiles } from "@/services/apiProfiles";
 
 function Profile() {
+  const [profiles, setProfiles] = useState<ProfileProps[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getProfiles();
+      setProfiles(data);
+      setLoading(false);
+    };
+
+    setTimeout(fetchData, 500);
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <NavBar currentNav="profile" />
-      <ProfileContent {...profileDummy} />
+      <ProfileContent {...profiles[0]} />
       <Footer />
     </>
   );

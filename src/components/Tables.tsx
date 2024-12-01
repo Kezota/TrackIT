@@ -1,5 +1,5 @@
 import Breadcrumb from "./ui/Breadcrumb";
-import TableThree from "./ui/TableThree";
+import TableThree from "./ui/AttendanceList";
 
 const Tables = () => {
   return (

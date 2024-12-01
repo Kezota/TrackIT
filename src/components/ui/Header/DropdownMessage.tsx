@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import ClickOutside from '../ClickOutside';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import ClickOutside from "../ClickOutside";
 
-import UserOne from "@/images/user/user-01.png";
+import UserOne from "@/images/user/empty-avatar.png";
 import UserTwo from "@/images/user/user-02.png";
 import UserThree from "@/images/user/user-03.png";
 import UserFour from "@/images/user/user-04.png";
@@ -23,8 +23,8 @@ const DropdownMessage = () => {
           to="#"
         >
           <span
-            className={`absolute -top-0.5 -right-0.5 z-1 h-2 w-2 rounded-full bg-meta-1 ${
-              notifying === false ? 'hidden' : 'inline'
+            className={`absolute -right-0.5 -top-0.5 z-1 h-2 w-2 rounded-full bg-meta-1 ${
+              notifying === false ? "hidden" : "inline"
             }`}
           >
             <span className="absolute -z-1 inline-flex h-full w-full animate-ping rounded-full bg-meta-1 opacity-75"></span>

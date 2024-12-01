@@ -19,6 +19,7 @@
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@relume_io/relume-ui": "^0.6.0",
+    "@supabase/supabase-js": "^2.46.2",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.5.0",
     "apexcharts": "^3.54.0",

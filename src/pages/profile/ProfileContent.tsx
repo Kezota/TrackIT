@@ -100,6 +100,11 @@ function ProfileContent({
 
 function formatPhoneNumber(phoneNum: string): string {
   const countryCode = "+62";
+
+  if (phoneNum.length === 0) {
+    return `${countryCode} ${phoneNum}`;
+  }
+
   const formattedNumber = phoneNum
     .replace(/^0/, "")
     .replace(/(\d{3})(\d{4})(\d{4})/, "$1 $2 $3");
