@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import DropdownMessage from "./DropdownMessage";
 import DropdownNotification from "./DropdownNotification";
 import DropdownUser from "./DropdownUser";
-import LogoIcon from "@/images/logo/logo-icon.svg";
 import DarkModeSwitcher from "./DarkModeSwitcher";
 
 const Header = (props: {
@@ -10,8 +9,8 @@ const Header = (props: {
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
   return (
-    <header className="z-999 drop-shadow-1 dark:bg-boxdark sticky top-0 flex w-full bg-white dark:drop-shadow-none">
-      <div className="shadow-2 flex flex-grow items-center justify-between px-4 py-4 md:px-6 2xl:px-11">
+    <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
+      <div className="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
         <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
           {/* <!-- Hamburger Toggle BTN --> */}
           <button
@@ -20,9 +19,9 @@ const Header = (props: {
               e.stopPropagation();
               props.setSidebarOpen(!props.sidebarOpen);
             }}
-            className="z-99999 border-stroke dark:border-strokedark dark:bg-boxdark block rounded-sm border bg-white p-1.5 shadow-sm lg:hidden"
+            className="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden"
           >
-            <span className="h-5.5 w-5.5 relative block cursor-pointer">
+            <span className="relative block h-5.5 w-5.5 cursor-pointer">
               <span className="du-block absolute right-0 h-full w-full">
                 <span
                   className={`delay-[0] relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black duration-200 ease-in-out dark:bg-white ${
@@ -57,7 +56,7 @@ const Header = (props: {
           {/* <!-- Hamburger Toggle BTN --> */}
 
           <Link className="block flex-shrink-0 lg:hidden" to="/">
-            <img src={LogoIcon} alt="Logo" />
+            <h1 className="text-2xl font-bold text-black">TrackIT</h1>
           </Link>
         </div>
 
@@ -66,7 +65,7 @@ const Header = (props: {
             <div className="relative">
               <button className="absolute left-0 top-1/2 -translate-y-1/2">
                 <svg
-                  className="fill-body dark:fill-bodydark hover:fill-primary dark:hover:fill-primary"
+                  className="fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary"
                   width="20"
                   height="20"
                   viewBox="0 0 20 20"
@@ -91,14 +90,14 @@ const Header = (props: {
               <input
                 type="text"
                 placeholder="Type to search..."
-                className="xl:w-125 w-full bg-transparent pl-9 pr-4 text-black focus:outline-none dark:text-white"
+                className="w-full bg-transparent pl-9 pr-4 text-black focus:outline-none dark:text-white xl:w-125"
               />
             </div>
           </form>
         </div>
 
-        <div className="2xsm:gap-7 flex items-center gap-3">
-          <ul className="2xsm:gap-4 flex items-center gap-2">
+        <div className="flex items-center gap-3 2xsm:gap-7">
+          <ul className="flex items-center gap-2 2xsm:gap-4">
             {/* <!-- Dark Mode Toggler --> */}
             <DarkModeSwitcher />
             {/* <!-- Dark Mode Toggler --> */}

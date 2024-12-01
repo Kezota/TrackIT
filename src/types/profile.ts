@@ -1,7 +1,7 @@
 export type Profile = {
   fullName: string;
   location: string;
-  gender: "Male" | "Female";
+  studentId: string;
   dateOfBirth: string;
   phoneNumber: string;
   email: string;

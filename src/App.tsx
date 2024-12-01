@@ -1,5 +1,5 @@
+import { Suspense, lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { lazy } from "react";
 
 const Home = lazy(() => import("./pages/Home"));
 const Attendance = lazy(() => import("./pages/Attendance"));
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     element: <Attendance />,
   },
   {
-    path: "/lecturer",
+    path: "/lecturer/*",
     element: <Lecturer />,
   },
   {
@@ -32,9 +32,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <RouterProvider router={router} />
-    </>
+    </Suspense>
   );
 }
 

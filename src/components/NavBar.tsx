@@ -11,9 +11,12 @@ import {
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/link";
 import { Button } from "@nextui-org/button";
+import { useLocation } from "react-router-dom";
 
 export default function NavBar({ currentNav }: { currentNav: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isCurrentPage = (path: string) => location.pathname === path;
 
   const menuItems = ["Home", "Attendance", "Profile", "Lecturer"];
 
@@ -86,15 +89,9 @@ export default function NavBar({ currentNav }: { currentNav: string }) {
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === menuItems.length - 1
-                    ? "danger"
-                    : "foreground"
-              }
+              color={isCurrentPage(`/${item}`) ? "primary" : "foreground"}
               className="w-full"
-              href="#"
+              href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
               size="lg"
             >
               {item}

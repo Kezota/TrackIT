@@ -4,7 +4,7 @@ import { Profile } from "@/types/profile";
 function ProfileContent({
   fullName,
   location,
-  gender,
+  studentId,
   dateOfBirth,
   phoneNumber,
   email,
@@ -27,13 +27,13 @@ function ProfileContent({
             className="xs:w-[7rem] xs:h-[7rem] xs:bottom-[3rem] relative rounded-md outline outline-2 outline-offset-2 outline-blue-500 sm:bottom-[4rem] sm:h-[8rem] sm:w-[8rem] md:h-[10rem] md:w-[10rem] lg:bottom-[5rem] lg:h-[12rem] lg:w-[12rem]"
           />
 
-          <h1 className="xs:pl-4 xs:text-2xl my-4 mb-0 w-full px-5 text-left font-serif text-[24px] font-bold text-gray-800 dark:text-white sm:mx-4 sm:text-3xl md:text-3xl lg:text-4xl">
+          <h1 className="xs:pl-4 xs:text-2xl my-4 mb-0 w-full px-5 text-left text-[24px] font-bold text-gray-800 dark:text-white sm:mx-4 sm:text-3xl md:text-3xl lg:text-4xl">
             {fullName}
           </h1>
         </div>
 
         <div className="xs:w-[90%] xs:-top-4 relative mx-auto mt-[20px] flex flex-col items-center gap-4 px-5 sm:-top-4 sm:w-[92%] md:-top-6 md:w-[90%] lg:-top-8 lg:w-[90%] xl:w-[80%]">
-          <p className="text-md w-fit text-gray-700 dark:text-gray-400">
+          <p className="w-fit text-gray-700 dark:text-gray-400 md:text-[18px]">
             {fullName} adalah mahasiswa Binus University Jakarta angkatan 27
             jurusan Computer Science. Berdomisili di {location}, ia memiliki
             minat dalam pengembangan teknologi dan informatika. Dengan peran
@@ -47,7 +47,7 @@ function ProfileContent({
                 <dl className="divide-y divide-gray-200 text-gray-900 dark:divide-gray-700 dark:text-white">
                   <div className="flex flex-col pb-3">
                     <dt className="mb-1 text-gray-500 dark:text-gray-400 md:text-lg">
-                      First Name
+                      Full Name
                     </dt>
                     <dd className="text-lg font-semibold">{fullName}</dd>
                   </div>
@@ -59,9 +59,9 @@ function ProfileContent({
                   </div>
                   <div className="flex flex-col py-3">
                     <dt className="mb-1 text-gray-500 dark:text-gray-400 md:text-lg">
-                      Gender
+                      Location
                     </dt>
-                    <dd className="text-lg font-semibold">{gender}</dd>
+                    <dd className="text-lg font-semibold">{location}</dd>
                   </div>
                 </dl>
               </div>
@@ -69,9 +69,9 @@ function ProfileContent({
                 <dl className="divide-y divide-gray-200 text-gray-900 dark:divide-gray-700 dark:text-white">
                   <div className="flex flex-col pb-3">
                     <dt className="mb-1 text-gray-500 dark:text-gray-400 md:text-lg">
-                      Location
+                      Student ID
                     </dt>
-                    <dd className="text-lg font-semibold">{location}</dd>
+                    <dd className="text-lg font-semibold">{studentId}</dd>
                   </div>
 
                   <div className="flex flex-col py-3">
