@@ -3,8 +3,8 @@ import { Link } from "@nextui-org/link";
 
 export default function NoProfile({ title }: { title: string }) {
   return (
-    <div className="mb-[150px] flex min-h-[450px] flex-col items-center justify-center gap-5">
-      <h1 className="text-2xl font-bold">{title}</h1>
+    <div className="mb-[60px] flex min-h-[450px] flex-col items-center justify-center gap-5 md:mb-[150px]">
+      <h1 className="text-center text-2xl font-bold">{title}</h1>
       <Button
         as={Link}
         color="primary"
