@@ -26,7 +26,7 @@ export async function getProfileByEmail(email: string) {
 }
 
 export async function login(email: string, password: string) {
-  let { data, error } = await supabase.auth.signInWithPassword({
+  const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
@@ -36,11 +36,15 @@ export async function login(email: string, password: string) {
     throw new Error("An error occurred while logging in");
   }
 
+  if (email.includes("admin"))
+    window.location.href = "/lecturer"; // Redirect to /lecturer
+  else window.location.href = "/profile"; // Redirect to profile
+
   return data;
 }
 
 export async function logout() {
-  let { error } = await supabase.auth.signOut();
+  const { error } = await supabase.auth.signOut();
 
   if (error) {
     console.log(error);

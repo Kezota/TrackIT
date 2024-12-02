@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { login } from "@/services/apiProfiles";
 import getLoggedUser from "@/helper/getLoggedUser";
 import { Button } from "@nextui-org/button";
-import { Link } from "@nextui-org/link";
 import onLogout from "@/helper/onLogout";
 
 function LoginCard() {
@@ -29,6 +28,7 @@ function LoginCard() {
       setPassword("");
       setIsLoggedIn(true);
     } catch (error) {
+      console.log(error);
       setError("Login failed. Please check your credentials and try again.");
     }
   };
