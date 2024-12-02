@@ -11,6 +11,12 @@ function ProfileContent({
   role,
   photo,
 }: Profile) {
+  const formatDate = (date: Date) => {
+    const dateString = String(date);
+    const [year, month, day] = dateString.split("-");
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <section className="w-full overflow-hidden dark:bg-gray-900">
       <div className="flex flex-col">
@@ -55,7 +61,9 @@ function ProfileContent({
                     <dt className="mb-1 text-gray-500 dark:text-gray-400 md:text-lg">
                       Date Of Birth
                     </dt>
-                    <dd className="text-lg font-semibold">{dateOfBirth}</dd>
+                    <dd className="text-lg font-semibold">
+                      {formatDate(dateOfBirth)}
+                    </dd>
                   </div>
                   <div className="flex flex-col py-3">
                     <dt className="mb-1 text-gray-500 dark:text-gray-400 md:text-lg">

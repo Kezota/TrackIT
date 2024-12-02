@@ -2,6 +2,7 @@ import { Profile } from "@/types/profile";
 import StudentCard from "@/components/StudentCard";
 import { useEffect, useState } from "react";
 import { getProfiles } from "@/services/apiProfiles";
+import Loader from "@/common/Loader";
 
 // const studentsDummy: Profile[] = [
 //   {
@@ -51,7 +52,7 @@ export default function Students() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (
@@ -61,7 +62,9 @@ export default function Students() {
       </h1>
       <div className="mb-0 grid grid-cols-1 gap-8 sm:grid-cols-2 md:mx-[140px] lg:grid-cols-3">
         {students.map((student, index) => {
-          return <StudentCard key={index} {...student} />;
+          if (student.role === "student") {
+            return <StudentCard key={index} {...student} />;
+          }
         })}
       </div>
     </>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   Navbar,
@@ -12,11 +12,22 @@ import {
 import { Link } from "@nextui-org/link";
 import { Button } from "@nextui-org/button";
 import { useLocation } from "react-router-dom";
+import getLoggedUser from "@/helper/getLoggedUser";
+import onLogout from "@/helper/onLogout";
 
 export default function NavBar({ currentNav }: { currentNav: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
   const isCurrentPage = (path: string) => location.pathname === path;
+
+  useEffect(() => {
+    const loggedUser = getLoggedUser();
+
+    if (loggedUser) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const menuItems = ["Home", "Attendance", "Profile", "Lecturer"];
 
@@ -80,9 +91,15 @@ export default function NavBar({ currentNav }: { currentNav: string }) {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem isActive={currentNav === "login"}>
-          <Button as={Link} color="primary" href="/login" variant="flat">
-            Login
-          </Button>
+          {isLoggedIn ? (
+            <Button as={Link} color="primary" onClick={onLogout} variant="flat">
+              Logout
+            </Button>
+          ) : (
+            <Button as={Link} color="primary" href="/login" variant="flat">
+              Login
+            </Button>
+          )}
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>

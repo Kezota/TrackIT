@@ -3,7 +3,7 @@ export type Profile = {
   fullName: string;
   location: string;
   studentId: string;
-  dateOfBirth: string;
+  dateOfBirth: Date;
   phoneNumber: string;
   email: string;
   role: "student" | "lecturer" | "staff";
