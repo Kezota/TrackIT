@@ -70,6 +70,7 @@ def recognize_face(frame, known_face_encodings, known_face_names):
 # Flask API endpoint
 @app.route('/api/attendance', methods=['POST'])
 def handle_attendance():
+    print("Request received")
     if 'image' not in request.files:
         return jsonify({"error": "No image file found"}), 400
 
