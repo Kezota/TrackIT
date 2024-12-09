@@ -75,6 +75,12 @@ def recognize_face(frame, known_face_encodings, known_face_names):
                 return "Unknown", 0.0
     return "No face detected", 0.0
 
+# Test endpoint
+@app.route('/test', methods=['GET'])
+def test():
+    print("Server is running")
+    return jsonify({"message": "Server is running"})
+
 # Flask API endpoint
 @app.route('/api/attendance', methods=['POST'])
 def handle_attendance():
