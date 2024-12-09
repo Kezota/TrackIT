@@ -21,22 +21,30 @@ mtcnn = MTCNN(keep_all=True)  # MTCNN untuk deteksi wajah
 inception_resnet = InceptionResnetV1(pretrained='vggface2').eval()  # Model untuk embedding wajah
 
 # Fungsi untuk memuat wajah yang sudah dikenal
+# Fungsi untuk memuat wajah yang sudah dikenal dari sub-folder
 def load_known_faces():
     known_face_encodings = []
     known_face_names = []
-    for filename in os.listdir(known_faces_dir):
-        if filename.endswith(".jpg") or filename.endswith(".png"):
-            img_path = os.path.join(known_faces_dir, filename)
-            img = cv2.imread(img_path)
-            img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-            faces = mtcnn(img_rgb)  # Deteksi wajah
+    
+    # Loop melalui setiap folder di dalam 'known_faces'
+    for person_name in os.listdir(known_faces_dir):
+        person_folder = os.path.join(known_faces_dir, person_name)
+        
+        # Pastikan yang kita baca adalah folder (bukan file)
+        if os.path.isdir(person_folder):
+            for filename in os.listdir(person_folder):
+                if filename.endswith(".jpg") or filename.endswith(".png"):
+                    img_path = os.path.join(person_folder, filename)
+                    img = cv2.imread(img_path)
+                    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+                    faces = mtcnn(img_rgb)  # Deteksi wajah
 
-            if faces is not None:
-                for face in faces:
-                    # Dapatkan embedding wajah (pastikan face sudah berupa tensor)
-                    face_embedding = inception_resnet(face.unsqueeze(0))  # Tambahkan dimensi batch
-                    known_face_encodings.append(face_embedding.detach().cpu().numpy())  # Simpan embedding wajah
-                    known_face_names.append(filename.split('.')[0])  # Gunakan nama file sebagai ID
+                    if faces is not None:
+                        for face in faces:
+                            # Dapatkan embedding wajah untuk perbandingan
+                            face_embedding = inception_resnet(face.unsqueeze(0))  # Tambahkan dimensi batch
+                            known_face_encodings.append(face_embedding.detach().cpu().numpy())  # Simpan embedding wajah
+                            known_face_names.append(person_name)  # Gunakan nama folder sebagai ID orang
 
     return known_face_encodings, known_face_names
 
