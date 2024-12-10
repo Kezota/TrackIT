@@ -72,7 +72,7 @@ def recognize_face(frame, known_face_encodings, known_face_names):
                 accuracy = round(100 - (min_distance * 100), 2)  # Accuracy as percentage
                 return name, accuracy
             else:
-                return "Unknown", 0.0
+                return "Unknown", 0.0   
     return "No face detected", 0.0
 
 # Test endpoint
@@ -111,4 +111,4 @@ def handle_attendance():
     return jsonify({"name": name, "accuracy": accuracy})
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)
