@@ -10,3 +10,4 @@ venv/
 
 # Ignore the .gitignore file itself (not typically needed)
 .gitignore
+.vercel

@@ -1,4 +1,8 @@
 __pycache__/
-.venv/
 *.log
+*.txt
 *.tmp
+.venv/
+.env
+./.venv
+venv
