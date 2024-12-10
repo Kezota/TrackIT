@@ -3,7 +3,6 @@ import NavBar from "../components/NavBar";
 import { useState, useRef, useCallback } from "react";
 import Webcam from "react-webcam";
 import axios from "axios";
-import Loader from "@/common/Loader";
 
 function Attendance() {
   const [attendanceData, setAttendanceData] = useState<{
@@ -33,7 +32,7 @@ function Attendance() {
 
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/attendance",
+          "http://192.168.232.250:5000/api/attendance",
           formData,
           {
             headers: {
@@ -44,6 +43,7 @@ function Attendance() {
         setAttendanceData(response.data); // The name and accuracy from the backend
         setError(null); // Reset any previous errors
       } catch (err) {
+        console.error(err);
         setError("Error in face recognition or no face detected");
         setAttendanceData(null);
       } finally {
@@ -59,7 +59,7 @@ function Attendance() {
         <h1 className="pb-10 pt-[40px] text-center text-4xl font-bold">
           Attendance Page
         </h1>
-        <div className="flex items-center justify-center gap-[40px]">
+        <div className="mx-5 flex flex-col items-center justify-center gap-[40px] md:flex-row">
           <div className="">
             <Webcam
               audio={false}
@@ -82,7 +82,7 @@ function Attendance() {
                   <img
                     src={capturedImage}
                     alt="Captured"
-                    className="max-w-md"
+                    className="mt-2 w-full max-w-md"
                   />
                 </div>
                 <button
@@ -97,11 +97,11 @@ function Attendance() {
             {isLoading && <p>Detect image...</p>}
             {attendanceData && !isLoading && (
               <div>
-                <p>Name: {attendanceData.name}</p>
-                <p>Accuracy: {attendanceData.accuracy}</p>
+                <p>Name: {extractFullName(attendanceData.name)}</p>
+                {/* <p>Accuracy: {attendanceData.accuracy}</p> */}
               </div>
             )}
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && !isLoading && <p style={{ color: "red" }}>{error}</p>}
           </div>
         </div>
       </div>
@@ -109,5 +109,9 @@ function Attendance() {
     </>
   );
 }
+
+const extractFullName = (name: string): string => {
+  return name.split(" (")[0];
+};
 
 export default Attendance;

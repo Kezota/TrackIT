@@ -1,4 +1,12 @@
-venv
-./.idea
-.vercel
-./.gitignore
+# Ignore virtual environment directories
+.venv/
+venv/
+
+# Ignore IDE configuration directories
+.idea/
+
+# Ignore Vercel configuration directory
+.vercel/
+
+# Ignore the .gitignore file itself (not typically needed)
+.gitignore
