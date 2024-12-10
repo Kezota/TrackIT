@@ -96,6 +96,9 @@ def handle_attendance():
     image_filename = secure_filename(image_file.filename)
     image_path = os.path.join("uploads", image_filename)
 
+    if not os.path.exists("uploads"):
+        os.makedirs("uploads")
+
     image_file.save(image_path)
 
     # Load the known faces and names
