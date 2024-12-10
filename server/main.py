@@ -24,7 +24,6 @@ mtcnn = MTCNN(keep_all=True)  # MTCNN untuk deteksi wajah
 inception_resnet = InceptionResnetV1(pretrained='vggface2').eval()  # Model untuk embedding wajah
 
 # Fungsi untuk memuat wajah yang sudah dikenal
-# Fungsi untuk memuat wajah yang sudah dikenal dari sub-folder
 def load_known_faces():
     known_face_encodings = []
     known_face_names = []
@@ -119,4 +118,4 @@ def handle_attendance():
     return jsonify({"name": name, "accuracy": accuracy})
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)
