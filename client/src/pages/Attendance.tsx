@@ -37,8 +37,9 @@ function Attendance() {
           {
             headers: {
               "Content-Type": "multipart/form-data",
-              Authorization: "Bearer trackitgacor", // Include the token here
+              Authorization: "Bearer trackitgacor",
             },
+            withCredentials: true,
           },
         );
         setAttendanceData(response.data); // The name and accuracy from the backend
