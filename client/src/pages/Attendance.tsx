@@ -37,6 +37,7 @@ function Attendance() {
           {
             headers: {
               "Content-Type": "multipart/form-data",
+              Authorization: "Bearer trackitgacor", // Include the token here
             },
           },
         );

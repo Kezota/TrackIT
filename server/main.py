@@ -11,6 +11,9 @@ app = Flask(__name__)
 # Enable CORS for all routes
 CORS(app)
 
+# Token for authentication
+SECRET_TOKEN = "trackitgacor"
+
 # Direktori untuk gambar wajah yang sudah dikenal
 known_faces_dir = "known_faces"
 if not os.path.exists(known_faces_dir):
@@ -84,6 +87,11 @@ def test():
 # Flask API endpoint
 @app.route('/api/attendance', methods=['POST'])
 def handle_attendance():
+    # Token validation
+    token = request.headers.get('Authorization')
+    if token != f"Bearer {SECRET_TOKEN}":
+        return jsonify({"error": "Unauthorized"}), 401
+
     print("Request received")
     if 'image' not in request.files:
         return jsonify({"error": "No image file found"}), 400
