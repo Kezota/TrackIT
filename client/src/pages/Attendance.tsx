@@ -58,13 +58,13 @@ function Attendance() {
         <h1 className="pb-10 pt-[40px] text-center text-4xl font-bold">
           Attendance Page
         </h1>
-        <div className="flex items-center justify-center gap-[40px]">
+        <div className="mx-5 flex flex-col items-center justify-center gap-[40px] md:flex-row">
           <div className="">
             <Webcam
               audio={false}
               ref={webcamRef}
               screenshotFormat="image/jpeg"
-              className="w-full max-w-md"
+              className="mt-2 w-full max-w-md"
             />
             <button
               onClick={capturePhoto}
