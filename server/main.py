@@ -77,6 +77,10 @@ def recognize_face(frame, known_face_encodings, known_face_names):
                 return "Unknown", 0.0   
     return "No face detected", 0.0
 
+@app.route('/')
+def index():
+    return "Face Recognition API"
+
 # Test endpoint
 @app.route('/test', methods=['GET'])
 def test():
@@ -118,4 +122,4 @@ def handle_attendance():
     return jsonify({"name": name, "accuracy": accuracy})
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True)
