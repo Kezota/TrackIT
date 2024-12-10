@@ -11,9 +11,6 @@ app = Flask(__name__)
 # Enable CORS for all routes
 CORS(app)
 
-# Token for authentication
-SECRET_TOKEN = "trackitgacor"
-
 # Direktori untuk gambar wajah yang sudah dikenal
 known_faces_dir = "known_faces"
 if not os.path.exists(known_faces_dir):
@@ -24,6 +21,7 @@ mtcnn = MTCNN(keep_all=True)  # MTCNN untuk deteksi wajah
 inception_resnet = InceptionResnetV1(pretrained='vggface2').eval()  # Model untuk embedding wajah
 
 # Fungsi untuk memuat wajah yang sudah dikenal
+# Fungsi untuk memuat wajah yang sudah dikenal dari sub-folder
 def load_known_faces():
     known_face_encodings = []
     known_face_names = []
@@ -74,7 +72,7 @@ def recognize_face(frame, known_face_encodings, known_face_names):
                 accuracy = round(100 - (min_distance * 100), 2)  # Accuracy as percentage
                 return name, accuracy
             else:
-                return "Unknown", 0.0   
+                return "Unknown", 0.0
     return "No face detected", 0.0
 
 # Test endpoint
@@ -86,11 +84,6 @@ def test():
 # Flask API endpoint
 @app.route('/api/attendance', methods=['POST'])
 def handle_attendance():
-    # Token validation
-    token = request.headers.get('Authorization')
-    if token != f"Bearer {SECRET_TOKEN}":
-        return jsonify({"error": "Unauthorized"}), 401
-
     print("Request received")
     if 'image' not in request.files:
         return jsonify({"error": "No image file found"}), 400
@@ -118,4 +111,4 @@ def handle_attendance():
     return jsonify({"name": name, "accuracy": accuracy})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000)
