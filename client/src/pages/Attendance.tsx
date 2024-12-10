@@ -32,7 +32,7 @@ function Attendance() {
 
       try {
         const response = await axios.post(
-          "http://192.168.232.250:5000/api/attendance",
+          "https://track-it-server-kezota-kezotas-projects.vercel.app/api/attendance",
           formData,
           {
             headers: {
