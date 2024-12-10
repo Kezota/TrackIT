@@ -4,6 +4,7 @@ venv/
 
 # Ignore IDE configuration directories
 .idea/
+./.idea
 
 # Ignore Vercel configuration directory
 .vercel/
