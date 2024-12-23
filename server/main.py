@@ -3,6 +3,7 @@ from flask_cors import CORS
 import os
 import cv2
 import numpy as np
+import torch
 from facenet_pytorch import MTCNN, InceptionResnetV1
 from werkzeug.utils import secure_filename
 
@@ -17,19 +18,33 @@ if not os.path.exists(known_faces_dir):
     os.makedirs(known_faces_dir)
 
 # Load model FaceNet
-mtcnn = MTCNN(keep_all=True)  # MTCNN untuk deteksi wajah
+mtcnn = MTCNN(keep_all=True, device='cuda' if torch.cuda.is_available() else 'cpu')  # MTCNN untuk deteksi wajah
 inception_resnet = InceptionResnetV1(pretrained='vggface2').eval()  # Model untuk embedding wajah
+
+
+def enhance_image(img):
+    # Mengubah citra ke grayscale
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # Menyesuaikan kontras dan pencahayaan menggunakan Histogram Equalization
+    enhanced_img = cv2.equalizeHist(gray)
+
+    # Mengurangi noise dengan GaussianBlur
+    enhanced_img = cv2.GaussianBlur(enhanced_img, (5, 5), 0)
+
+    # Mengembalikan citra yang telah diproses
+    return enhanced_img
 
 # Fungsi untuk memuat wajah yang sudah dikenal
 # Fungsi untuk memuat wajah yang sudah dikenal dari sub-folder
 def load_known_faces():
     known_face_encodings = []
     known_face_names = []
-    
+
     # Loop melalui setiap folder di dalam 'known_faces'
     for person_name in os.listdir(known_faces_dir):
         person_folder = os.path.join(known_faces_dir, person_name)
-        
+
         # Pastikan yang kita baca adalah folder (bukan file)
         if os.path.isdir(person_folder):
             for filename in os.listdir(person_folder):
@@ -50,7 +65,11 @@ def load_known_faces():
 
 # Fungsi untuk mengenali wajah dari gambar
 def recognize_face(frame, known_face_encodings, known_face_names):
-    img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    # Terapkan enhancement pada gambar sebelum deteksi wajah
+    enhanced_img = enhance_image(frame)
+
+    # Mengubah citra yang sudah diproses menjadi RGB
+    img_rgb = cv2.cvtColor(enhanced_img, cv2.COLOR_GRAY2RGB)
     faces = mtcnn(img_rgb)  # Deteksi wajah dalam gambar
 
     if faces is not None:
@@ -75,6 +94,8 @@ def recognize_face(frame, known_face_encodings, known_face_names):
                 return "Unknown", 0.0
     return "No face detected", 0.0
 
+# ---------------------------- Flask API ----------------------------
+# Flask API endpoint
 @app.route('/')
 def index():
     return "Face Recognition API"

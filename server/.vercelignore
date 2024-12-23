@@ -1,8 +1,0 @@
-__pycache__/
-*.log
-*.txt
-*.tmp
-.venv/
-.env
-./.venv
-venv

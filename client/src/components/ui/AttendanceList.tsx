@@ -5,71 +5,12 @@ import {
   getAttendances,
 } from "@/services/apiAttendances";
 
-// const attendanceData: Attendance[] = [
-//   {
-//     name: "Kezia Meilany Tandapai",
-//     studentId: "2702272823",
-//     attendDate: "Jan 13,2023",
-//     attendTime: "11:32:53",
-//     evidancePhoto: person,
-//   },
-//   {
-//     name: "Kezia Meilany Tandapai",
-//     studentId: "2702272823",
-//     attendDate: "Jan 13,2023",
-//     attendTime: "11:32:53",
-//     evidancePhoto: person,
-//   },
-//   {
-//     name: "Kezia Meilany Tandapai",
-//     studentId: "2702272823",
-//     attendDate: "Jan 13,2023",
-//     attendTime: "11:32:53",
-//     evidancePhoto: person,
-//   },
-//   {
-//     name: "Kezia Meilany Tandapai",
-//     studentId: "2702272823",
-//     attendDate: "Jan 13,2023",
-//     attendTime: "11:32:53",
-//     evidancePhoto: person,
-//   },
-//   {
-//     name: "Kezia Meilany Tandapai",
-//     studentId: "2702272823",
-//     attendDate: "Jan 13,2023",
-//     attendTime: "11:32:53",
-//     evidancePhoto: person,
-//   },
-//   {
-//     name: "Kezia Meilany Tandapai",
-//     studentId: "2702272823",
-//     attendDate: "Jan 13,2023",
-//     attendTime: "11:32:53",
-//     evidancePhoto: person,
-//   },
-//   {
-//     name: "Kezia Meilany Tandapai",
-//     studentId: "2702272823",
-//     attendDate: "Jan 13,2023",
-//     attendTime: "11:32:53",
-//     evidancePhoto: person,
-//   },
-//   {
-//     name: "Kezia Meilany Tandapai",
-//     studentId: "2702272823",
-//     attendDate: "Jan 13,2023",
-//     attendTime: "11:32:53",
-//     evidancePhoto: person,
-//   },
-// ];
-
 const AttendanceList = () => {
   const [attendances, setAttendances] = useState<Attendance[]>([]);
 
   useEffect(() => {
     getAttendances().then((data) => {
-      setAttendances(data);
+      setAttendances(data?.reverse() || []);
     });
   }, []);
 

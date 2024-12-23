@@ -1,5 +1,5 @@
 export type Attendance = {
-  id: number;
+  id?: number;
   name: string;
   studentId: string;
   attendDate: string;

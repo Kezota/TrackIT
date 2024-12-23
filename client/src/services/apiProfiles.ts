@@ -25,6 +25,20 @@ export async function getProfileByEmail(email: string) {
   return data;
 }
 
+export async function getProfileByName(name: string) {
+  const { data, error } = await supabase
+    .from("Profile")
+    .select("*")
+    .eq("fullName", name);
+
+  if (error) {
+    console.log(error);
+    throw new Error("An error occurred while fetching profiles");
+  }
+
+  return data;
+}
+
 export async function login(email: string, password: string) {
   const { data, error } = await supabase.auth.signInWithPassword({
     email,

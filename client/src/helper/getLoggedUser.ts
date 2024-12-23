@@ -5,7 +5,6 @@ export default function getLoggedUser() {
   if (sessionToken) {
     const session = JSON.parse(sessionToken);
     if (session && session.user) {
-      console.log("Logged in as:", session.user.email);
       return session.user.email;
     }
   }
