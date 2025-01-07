@@ -75,7 +75,7 @@ werkzeug>=3.1.3
 
 ## 📸 Screenshots
 
-![Screenshot of TrackIT Home Page](public/HomePage.png)  
+![Screenshot of TrackIT Home Page](/HomePage.png)  
 
 ## 👏 Credits
 
