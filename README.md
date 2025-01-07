@@ -1,4 +1,4 @@
-# TrackIT 🎓
+# TrackIT 🧑
 
 Welcome to **TrackIT**, an AI-powered web application that simplifies attendance tracking in universities. By leveraging facial recognition technology, TrackIT minimizes fraud, updates attendance data in real-time, and seamlessly integrates with academic systems. This platform offers a user-friendly interface for both lecturers and students, enabling practical and secure attendance monitoring.
 
@@ -22,6 +22,15 @@ Welcome to **TrackIT**, an AI-powered web application that simplifies attendance
 ## 🔧 Installation
 
 If you want to run this project locally, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Kezota/TrackIT.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd TrackIT
+   ```
 
 #### Client Setup:
 1. Navigate to the `client` directory:
